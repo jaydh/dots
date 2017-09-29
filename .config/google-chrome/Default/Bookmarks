@@ -1,0 +1,116 @@
+{
+   "checksum": "005a709429ed8b6e4e4167835da43763",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "date_added": "13076795186026000",
+            "id": "12",
+            "meta_info": {
+               "last_visited_desktop": "13151183736979145"
+            },
+            "name": "Eir",
+            "sync_transaction_version": "10",
+            "type": "url",
+            "url": "http://na.op.gg/summoner/userName=eir"
+         }, {
+            "date_added": "13099801504240377",
+            "id": "13",
+            "meta_info": {
+               "last_visited_desktop": "13151140827807323"
+            },
+            "name": "Meh",
+            "sync_transaction_version": "1",
+            "type": "url",
+            "url": "https://meh.com/"
+         }, {
+            "date_added": "13146039675863573",
+            "id": "14",
+            "meta_info": {
+               "last_visited_desktop": "13151194358961436"
+            },
+            "name": "wispy",
+            "sync_transaction_version": "15",
+            "type": "url",
+            "url": "https://console.firebase.google.com/project/wisper-ffe5b/overview"
+         }, {
+            "date_added": "13147725586138305",
+            "id": "15",
+            "meta_info": {
+               "last_visited_desktop": "13151196537558295"
+            },
+            "name": "wisper",
+            "sync_transaction_version": "11",
+            "type": "url",
+            "url": "https://wispy.jaydanhoward.com/"
+         } ],
+         "date_added": "13151162644781183",
+         "date_modified": "13151185464663069",
+         "id": "1",
+         "name": "Bookmarks bar",
+         "type": "folder"
+      },
+      "other": {
+         "children": [  ],
+         "date_added": "13151162644781187",
+         "date_modified": "0",
+         "id": "2",
+         "name": "Other bookmarks",
+         "type": "folder"
+      },
+      "sync_transaction_version": "15",
+      "synced": {
+         "children": [ {
+            "date_added": "13012172119061159",
+            "id": "6",
+            "name": "OGN",
+            "sync_transaction_version": "1",
+            "type": "url",
+            "url": "http://www.twitch.tv/ongamenet"
+         }, {
+            "date_added": "13000097824243080",
+            "id": "7",
+            "name": "Lifehacker",
+            "sync_transaction_version": "1",
+            "type": "url",
+            "url": "http://m.lifehacker.com/"
+         }, {
+            "date_added": "13011480058723851",
+            "id": "8",
+            "name": "Lolk",
+            "sync_transaction_version": "1",
+            "type": "url",
+            "url": "http://www.lolking.net/summoner/na/21818092"
+         }, {
+            "date_added": "13013145159379009",
+            "id": "9",
+            "name": "Music on Google Play",
+            "sync_transaction_version": "1",
+            "type": "url",
+            "url": "https://play.google.com/store/music?feature=corpus_selector"
+         }, {
+            "date_added": "13020895517901834",
+            "id": "10",
+            "name": "Rooster Teeth",
+            "sync_transaction_version": "1",
+            "type": "url",
+            "url": "http://www.reddit.com/r/roosterteeth"
+         }, {
+            "date_added": "13020917846655309",
+            "id": "11",
+            "meta_info": {
+               "last_visited_desktop": "13146392629703956"
+            },
+            "name": "TextBook Answers",
+            "sync_transaction_version": "1",
+            "type": "url",
+            "url": "http://spotcos.com/misc/UW_PHYS_12X_ANSWERS/"
+         } ],
+         "date_added": "13151162644781188",
+         "date_modified": "13020917846655309",
+         "id": "3",
+         "name": "Mobile bookmarks",
+         "type": "folder"
+      }
+   },
+   "version": 1
+}

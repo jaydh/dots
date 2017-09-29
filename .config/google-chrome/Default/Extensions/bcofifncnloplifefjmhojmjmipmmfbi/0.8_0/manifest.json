@@ -1,0 +1,26 @@
+{
+   "background": {
+      "persistent": false,
+      "scripts": [ "js/background.js" ]
+   },
+   "browser_action": {
+      "default_icon": "icon.png",
+      "default_title": "Twitch Auto Theater"
+   },
+   "content_scripts": [ {
+      "js": [ "js/jquery.min.js", "js/inject.js" ],
+      "matches": [ "http://www.twitch.tv/*", "https://www.twitch.tv/*" ]
+   } ],
+   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+   "description": "Extension to automatically open Theater Mode on Twitch streams",
+   "icons": {
+      "128": "icon.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs+OTB+EYFOCQksGbpmV1wrL9OfeE2Ic2jvOvK3KlLdJ22ed+t47LFwS+RTWZGSxlAD4kiD6/npsTqAqU3jjWpjRjRej/ELcqY8o/oa3Vjdt4tqboZAU58Yqkbz8tpKMxsS8VzORbEvqrgVc+ZszCUUXO20EHLiuEc2rpCjp0tfBI3L/UhIsfeb6CxnyejCNjd6CK+veqan2e5FS//gu5yNkc+QNrGMHqXubQy5bAikYNPa9VGVfO8JdQhfuMStPjEfl/Z57d34IeiP2Q2NRQjtYes7HrBFvZDE4EyUKIn1MNZW0eCpFDbGmxuSQutH5RWZPtol5aMOqZbshRATsbfQIDAQAB",
+   "manifest_version": 2,
+   "name": "Twitch Auto Theater",
+   "options_page": "options.html",
+   "permissions": [ "http://www.twitch.tv/*", "storage" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "0.8"
+}
