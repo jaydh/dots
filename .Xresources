@@ -1,19 +1,21 @@
-#define base00 #1A1B1C
-#define base01 #222222
-#define base02 #37474F
-#define base03 #707880
-#define base04 #C9CCD3
-#define base05 #CDD3DE
-#define base06 #D5DBE5
-#define base07 #FFFFFF
-#define base08 #EC5F67
-#define base09 #EA9560
-#define base0A #FFCC00
-#define base0B #8BD649
-#define base0C #80CBC4
-#define base0D #89DDFF
-#define base0E #82AAFF
-#define base0F #EC5F67
+
+
+#define base00 #1d252b
+#define base01 #303940
+#define base02 #3f4b54
+#define base03 #6c7175
+#define base04 #888f94
+#define base05 #b8bcbf
+#define base06 #d7dde0
+#define base07 #ffffff
+#define base08 #eb6e63
+#define base09 #e0894a
+#define base0A #bfaf60
+#define base0B #5c9e61
+#define base0C #4f9e91
+#define base0D #6f9ebf
+#define base0E #a688b5
+#define base0F #c9879d
 
 *.foreground:   base05
 #ifdef background_opacity
@@ -43,32 +45,35 @@
 
 ! URxvt Config
 !---------------------
-URxvt.font: xft:bitbuntufull:size=11
-URxvt.boldFont: true
+URxvt.font: xft:bitbuntufull:size=8
+URxvt.boldFont:
 URxvt.scrollBar: false
 URxvt.cursorBlink: true
-URxvt.internalBorder: 5
+URxvt.internalBorder: 30
 URxvt.perl-ext: default,matcher
 URxvt.matcher.button: 1
 URxvt.url-launcher: /usr/bin/inox
-URxvt.visualBell: true
-URxvt.depth: 10
+URxvt.visualBell: false
+URxvt.depth: 32
 URxvt.iso14755: false
 URxvt.iso14755_52: false
+
+
+
 
 ! ------------------------------------------------------------------------------
 ! ROFI Color theme
 ! ------------------------------------------------------------------------------
 rofi.color-enabled: true
-rofi.color-window: base07, base07, base00
-rofi.color-normal: argb:0000000, base00, argb:0000000, base00,   base07
-rofi.color-active: argb:0000000, #6699cc, argb:0000000, #6699cc, #1b2b34
-rofi.color-urgent: argb:0000000, #e12a36, argb:0000000, #dd2a4b, #1b2b34
-rofi.font:bitbuntufull 9
+rofi.color-window: #1d252b, #1d252b, #b8bcbf
+rofi.font:bitbuntufull 8
 rofi.separator-style: none
 rofi.hide-scrollbar: true
 rofi.location:0
-rofi.lines: 8
-rofi.width: 600
+rofi.lines: 4
+rofi.width: 300
 rofi.yoffset: 26
 rofi.padding: 32
+rofi.color-normal:      argb:00333333, #ffffff, argb:00333333, argb:00333333, argb:ffefa211
+rofi.color-urgent:      argb:00333333, #ffffff, argb:00333333, argb:00333333, argb:ffefa211
+rofi.color-active:      argb:00333333, #ffffff, argb:00333333, argb:00333333, argb:ffefa211
