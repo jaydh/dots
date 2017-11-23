@@ -1,62 +1,66 @@
 
+*background: #dd2233
+*foreground: #ffeedd
+*fadeColor: #002b36
+*cursorColor: #93a1a1
+*pointerColorBackground: #586e75
+*pointerColorForeground: #93a1a1
 
-#define base00 #1d252b
-#define base01 #303940
-#define base02 #3f4b54
-#define base03 #6c7175
-#define base04 #888f94
-#define base05 #b8bcbf
-#define base06 #d7dde0
-#define base07 #ffffff
-#define base08 #eb6e63
-#define base09 #e0894a
-#define base0A #bfaf60
-#define base0B #5c9e61
-#define base0C #4f9e91
-#define base0D #6f9ebf
-#define base0E #a688b5
-#define base0F #c9879d
+!! black dark/light
+*color0: #220000
+*color8: #220011
 
-*.foreground:   base05
-#ifdef background_opacity
-*.background:   [background_opacity]base00
-#else
-*.background:   base00
-#endif
-*.cursorColor:  base05
+!! red dark/light
+*color1: #dd2222
+*color9: #dd2233
 
-*.color0:       base00
-*.color1:       base08
-*.color2:       base0B
-*.color3:       base0A
-*.color4:       base0D
-*.color5:       base0E
-*.color6:       base0C
-*.color7:       base05
+!! green dark/light
+*color2: #556644
+*color10: #888844
 
-*.color8:       base03
-*.color9:       base09
-*.color10:      base01
-*.color11:      base02
-*.color12:      base04
-*.color13:      base06
-*.color14:      base0F
-*.color15:      base07
+!! yellow dark/light
+*color3: #ffee00
+*color11: #ffcc88
 
-! URxvt Config
+!! blue dark/light
+*color4: #333355
+*color12: #664466
+
+!! magenta dark/light
+*color5: #664466
+*color13: #997788
+
+!! cyan dark/light
+*color6: #774444
+*color14: #aa6666
+
+!! white dark/light
+*color7: #aa9988
+*color15: #ffeedd
 !---------------------
-URxvt.font: xft:bitbuntufull:size=8
-URxvt.boldFont:
+URxvt.font: xft:adobe\\-source\\-code\\-pro\\-fonts:size=9
+
+URxvt.letterSpace:-1
 URxvt.scrollBar: false
 URxvt.cursorBlink: true
-URxvt.internalBorder: 30
 URxvt.perl-ext: default,matcher
 URxvt.matcher.button: 1
-URxvt.url-launcher: /usr/bin/inox
 URxvt.visualBell: false
 URxvt.depth: 32
+urxvt*background: rgba:0000/0000/0000/c800
 URxvt.iso14755: false
 URxvt.iso14755_52: false
+URxvt.geometry:             60x30
+URxvt.fading:               0
+URxvt.loginShell:           true
+URxvt.saveLines:            50
+URxvt.internalBorder:       3
+URxvt.lineSpace:            0
+URxvt.scrollStyle:          rxvt
+URxvt.cursorColor:          #657b83
+URxvt.cursorUnderline:      false
+URxvt.pointerBlank:         true
+
 
 
 
