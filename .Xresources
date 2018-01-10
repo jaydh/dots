@@ -38,7 +38,7 @@
 *color7: #aa9988
 *color15: #ffeedd
 !---------------------
-URxvt.font: xft:adobe\\-source\\-code\\-pro\\-fonts:size=9
+URxvt.font: xft:dina:size=9
 
 URxvt.letterSpace:-1
 URxvt.scrollBar: false
@@ -50,7 +50,7 @@ URxvt.depth: 32
 urxvt*background: rgba:0000/0000/0000/c800
 URxvt.iso14755: false
 URxvt.iso14755_52: false
-URxvt.geometry:             60x30
+URxvt.geometry:             120x30
 URxvt.fading:               0
 URxvt.loginShell:           true
 URxvt.saveLines:            50
