@@ -1,13 +1,10 @@
 call plug#begin()
-	Plug 'othree/yajs.vim'
 	Plug 'crusoexia/vim-monokai'
 	Plug 'kristijanhusak/vim-hybrid-material'
 	Plug 'rakr/vim-one'
-	Plug 'othree/html5.vim'
-	Plug 'mxw/vim-jsx'
 	Plug 'elzr/vim-json'
-	Plug 'mhartington/nvim-typescript', {'do': 'UpdateRemotePlugins'}
-	Plug 'HerringtonDarkholme/yats.vim'
+  Plug 'HerringtonDarkholme/yats.vim'
+  Plug 'Quramy/tsuquyomi'
 	Plug 'severin-lemaignan/vim-minimap'
 	Plug 'scrooloose/nerdtree'
 	Plug 'bling/vim-airline'
@@ -15,6 +12,8 @@ call plug#begin()
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'Shougo/deoplete.nvim'
   Plug 'lilydjwg/colorizer'
+  Plug 'mhartington/vim-typings'
+  Plug 'junegunn/limelight.vim'
 call plug#end()
 
 syntax enable
