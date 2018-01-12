@@ -90,7 +90,7 @@ date = " %I:%M"
 
 [module/battery]
 type = internal/battery
-full-at = 99 
+full-at = 100
 battery = BAT0
 adapter = ADP1
 poll-interval = 5

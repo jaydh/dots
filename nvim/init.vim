@@ -1,6 +1,7 @@
 call plug#begin()
 	Plug 'crusoexia/vim-monokai'
 	Plug 'kristijanhusak/vim-hybrid-material'
+  Plug 'dylanaraps/wal'
 	Plug 'rakr/vim-one'
 	Plug 'elzr/vim-json'
   Plug 'HerringtonDarkholme/yats.vim'
@@ -17,7 +18,7 @@ call plug#begin()
 call plug#end()
 
 syntax enable
-colorscheme hybrid_reverse
+colorscheme wal 
 set background=dark
 let g:enable_bold_font = 1
 let g:enbale_italic_font = 1
