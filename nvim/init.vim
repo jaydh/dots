@@ -20,6 +20,7 @@ call plug#end()
 syntax enable
 colorscheme wal 
 set background=dark
+set number relativenumber
 let g:enable_bold_font = 1
 let g:enbale_italic_font = 1
 let g:airline_theme='one'
@@ -37,6 +38,7 @@ let g:nvim_typescript#type_info_on_hold = 1
 let g:nvim_typescript#signature_complete = 1
 let g:deoplete#enable_at_startup=1
 
+set modelines=0
 set backupcopy=yes
 set tabstop=2
 set shiftwidth=2
@@ -51,16 +53,23 @@ set hidden
 set wildmenu
 set wildmode=list:longest
 set visualbell
-set cursorline
 set ttyfast
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
-set relativenumber
 set undofile
+set number
 
 nnoremap / /\v
-vnoremap / /\v
+vnoremap / /\vset ignorecase
+set smartcase
+set gdefault
+set incsearch
+set showmatch
+set hlsearch
+nnoremap <leader><space> :noh<cr>
+nnoremap <tab> %v
+noremap <tab> %
 set ignorecase
 set smartcase
 set incsearch
@@ -72,5 +81,21 @@ set wrap
 set textwidth=79
 set formatoptions=qrn1
 set colorcolumn=85
-
 au FocusLost * :wa
+
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+nnoremap j gj
+nnoremap k gk
+inoremap <F1> <ESC>nnoremap <F1> <ESC>vnoremap <F1> <ESC>
+nnoremap <NL> i<CR><ESC>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l

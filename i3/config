@@ -1,12 +1,11 @@
 focus_follows_mouse no
-
-exec_always --no-startup-id wal  -i /home/jay/Dropbox/wallpapers/ -o ~./scripts/bar.sh
+exec xrdb load ~/.Xresources
+exec_always --no-startup-id wal -g
+exec_always --no-startup-id oomoxify-cli ~/.cache/wal/colors-oomox
+exec_always --no-startup-id wal -R
 exec compton &
-exec xrdb -load ~/.Xresources
 exec xautolock -time 7 -locker lock &
 exec_always --no-startup-id ~/scripts/bar.sh
-exec xrdb .Xresources
-exec urxvtd &
 exec xset -b
 exec xbindkeys
 
