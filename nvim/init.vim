@@ -15,6 +15,8 @@ call plug#begin()
   Plug 'lilydjwg/colorizer'
   Plug 'mhartington/vim-typings'
   Plug 'junegunn/limelight.vim'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'tpope/vim-fugitive'
 call plug#end()
 
 syntax enable
