@@ -1,0 +1,202 @@
+[global/wm]
+;margin-top = 
+;margin-bottom = 2
+
+[colors]
+fg = ${xrdb:color7}
+bg = ${xrdb:color0}
+
+[bar/top]
+font-0 = FontAwesome:pixelsize=20;3
+font-1 = "Dina:pixelsize=30;1"
+font-2 = unifont:fontformat=truetype:size=30:antialias=false;0
+font-3 = "Wuncon Siji:pixelsize=30;1"
+
+width = 100%
+height = 40
+offset-x = 0%
+offset-y= 0%
+override-redirect = false 
+bottom=false
+
+background = ${colors.bg}
+foreground = ${colors.fg}
+
+modules-right = wlan cpu volume battery
+modules-center = xwindow spotipy mpd
+modules-left = date time i3
+
+tray-position = right
+tray-padding = 2
+tray-background = ${colors.bg}
+tray-transparent = false
+tray-detached = false
+
+underline-size = 3
+
+spacing = 1 
+padding-left = 0
+padding-right = 0
+module-margin-left = 2
+module-margin-right = 2
+
+[module/volume]
+type = internal/volume
+
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%%
+label-muted =  muted
+ramp-volume-0 = 
+ramp-volume-1 = 
+format-volume-foreground = ${colors.fg}
+format-volume-background = ${colors.bg}
+
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+module-margin-left = 2
+format-padding = 2
+format-background = ${colors.bg}
+
+[module/i3]
+type = internal/i3
+strip-wsnumbers = true
+enable-click = false
+index-sort = true
+format = <label-state>
+
+label-focused-foreground = ${colors.fg}
+label-focused-background = ${colors.bg}
+label-focused-padding = 1
+
+label-unfocused-foreground = ${colors.fg}
+label-unfocused-background = ${colors.bg}
+label-unfocused-padding = 1
+
+label-urgent-foreground = #EC5f67
+label-urgent-background = ${colors.bg}
+label-urgent-padding = 1
+
+[module/date]
+type = internal/date
+interval = 1
+date = " %A, %d %B"
+
+[module/time]
+type = internal/date
+interval = 1
+date = " %I:%M"
+
+[module/battery]
+type = internal/battery
+full-at = 99 
+battery = BAT0
+adapter = ADP1
+poll-interval = 5
+time-format = %H:%M
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+label-charging = %percentage%% - %time%
+label-discharging = %percentage%% - %time%
+
+label-full = 
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+bar-capacity-width = 10
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
+
+[module/spotipy]
+type = custom/script
+exec =  ~/scripts/spoti.py
+exec-if = pgrep spotify > /dev/null
+interval = 0.01
+click-left = playerctl -p spotify play-pause 
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-disconnected = <label-disconnected>
+
+label-connected = %essid% 
+label-connected-foreground = #eefafafa
+
+ramp-signal-0 = 
+ramp-signal-foreground = #666
+
+[module/cpu]
+type = internal/cpu
+interval = 0.5
+format = <label>
+label =  %percentage%%
+
+[module/mpd]
+type = internal/mpd
+
+host = 127.0.0.1
+port = 6600
+
+; Seconds to sleep between progressbar/song timer sync
+; Default: 1
+interval = 2
+format-online = <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>  <icon-repeat> <icon-random>  <bar-progress> <label-time>  <label-song>
+;format-playing = ${self.format-online}
+;format-paused = ${self.format-online}
+;format-stopped = ${self.format-online}
+
+; Available tags:
+;   <label-offline>
+;format-offline = <label-offline>
+
+; Available tokens:
+;   %artist%
+;   %album%
+;   %date%
+;   %title%
+; Default: %artist% - %title%
+label-song = 𝄞 %artist% - %title%
+
+; Available tokens:
+;   %elapsed%
+;   %total%
+; Default: %elapsed% / %total%
+;label-time = %elapsed% / %total%
+
+; Available tokens:
+;   None
+label-offline = 🎜 mpd is offline
+
+; Only applies if <icon-X> is used
+icon-play = ⏵
+icon-pause = ⏸
+icon-stop = ⏹
+icon-prev = ⏮
+icon-next = ⏭
+icon-seekb = ⏪
+icon-seekf = ⏩
+icon-random = 🔀
+icon-repeat = 🔁
+icon-repeatone = 🔂
+icon-consume = ✀
+
+; Used to display the state of random/repeat/repeatone
+; Only applies if <icon-[random|repeat|repeatone]> is used
+toggle-on-foreground = #ff
+toggle-off-foreground = #55
+
+; Only applies if <bar-progress> is used
+bar-progress-width = 45
+bar-progress-indicator = |
+bar-progress-fill = ─
+bar-progress-empty = ─
