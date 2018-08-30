@@ -18,10 +18,20 @@ call plug#begin()
   Plug 'airblade/vim-gitgutter'
   Plug 'tpope/vim-fugitive'
   Plug 'challenger-deep-theme/vim'
+  Plug 'tpope/vim-surround'
+  Plug 'drewtempelmeyer/palenight.vim'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+  Plug 'w0rp/ale'
 call plug#end()
 
+command W w !sudo tee "%" > /dev/null
+let g:ale_fixers = ['prettier']
+let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
+map <Leader>o :ALEFix<CR>
 syntax enable
-colorscheme challenger_deep
+colorscheme palenight
 set background=dark
 set number relativenumber
 let g:enable_bold_font = 1
