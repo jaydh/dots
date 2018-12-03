@@ -8,7 +8,7 @@ call plug#begin()
   Plug 'Quramy/tsuquyomi'
   Plug 'scrooloose/nerdtree'
 	Plug 'severin-lemaignan/vim-minimap'
-	Plug 'bling/vim-airline'
+	Plug 'itchyny/lightline.vim'
 	Plug 'prettier/vim-prettier', {'do': 'yarn install'}
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'Shougo/deoplete.nvim'
@@ -32,11 +32,18 @@ let g:ale_completion_enabled = 1
 map <Leader>o :ALEFix<CR>
 syntax enable
 colorscheme palenight
+let g:lightline = {'colorscheme':'palenight'}
+if (has("nvim"))
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+if (has("termguicolors"))
+  set termguicolors
+endif
+let g:palenight_terminal_italics=1
 set background=dark
 set number relativenumber
 let g:enable_bold_font = 1
 let g:enbale_italic_font = 1
-let g:airline_theme='one'
 map <C-n> :NERDTreeToggle<CR>
 map <Leader>i <Plug>(Prettier)
 set mouse=a
