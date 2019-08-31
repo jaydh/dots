@@ -1,38 +1,64 @@
 call plug#begin()
-	Plug 'crusoexia/vim-monokai'
-	Plug 'kristijanhusak/vim-hybrid-material'
   Plug 'dylanaraps/wal'
 	Plug 'rakr/vim-one'
 	Plug 'elzr/vim-json'
   Plug 'HerringtonDarkholme/yats.vim'
-  Plug 'Quramy/tsuquyomi'
   Plug 'scrooloose/nerdtree'
-	Plug 'severin-lemaignan/vim-minimap'
-	Plug 'itchyny/lightline.vim'
+  Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 	Plug 'prettier/vim-prettier', {'do': 'yarn install'}
 	Plug 'jiangmiao/auto-pairs'
-	Plug 'Shougo/deoplete.nvim'
   Plug 'lilydjwg/colorizer'
   Plug 'mhartington/vim-typings'
-  Plug 'junegunn/limelight.vim'
   Plug 'airblade/vim-gitgutter'
   Plug 'tpope/vim-fugitive'
-  Plug 'challenger-deep-theme/vim'
   Plug 'tpope/vim-surround'
   Plug 'drewtempelmeyer/palenight.vim'
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug '/usr/local/opt/fzf'
   Plug 'junegunn/fzf.vim'
   Plug 'w0rp/ale'
 call plug#end()
 
-command W w !sudo tee "%" > /dev/null
-let g:ale_fixers = ['prettier']
-let g:ale_fix_on_save = 1
+
+nnoremap <C-f> :Files<Cr>
+nnoremap <C-g> :Rg<Cr>
+nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <c-x><c-l> <plug>(fzf-complete-line)
+nnoremap <Leader>i :ALEFix<CR>
+nmap <Leader>a <Plug>GitGutterStageHunk
+nmap <Leader>r <Plug>GitGutterUndoHunk
+
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+let g:fzf_layout = { 'down': '~40%' }
+let g:fzf_layout = { 'window': 'enew' }
+let g:fzf_layout = { 'window': '-tabnew' }
+let g:fzf_layout = { 'window': '10split' }
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+autocmd! FileType fzf
+autocmd  FileType fzf set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+let g:ale_fixers = ['prettier', 'eslint']
+nmap <leader>i <Plug>(ale_fix)
 let g:ale_completion_enabled = 1
-map <Leader>o :ALEFix<CR>
 syntax enable
 colorscheme palenight
-let g:lightline = {'colorscheme':'palenight'}
 if (has("nvim"))
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
@@ -44,20 +70,13 @@ set background=dark
 set number relativenumber
 let g:enable_bold_font = 1
 let g:enbale_italic_font = 1
-map <C-n> :NERDTreeToggle<CR>
-map <Leader>i <Plug>(Prettier)
 set mouse=a
-map <ScrollWheelUp> <C-Y>
-map <ScrollWheelDown> <C-E>
 
-let g:prettier#config#bracket_spacing = 'true'
-let g:prettier#config#parser = 'babylon'
-let g:prettier#config#jsx_bracket_same_line = 'false'
-let g:prettier#config#trailing_comma = 'none'
 let g:nvim_typescript#type_info_on_hold = 1
 let g:nvim_typescript#signature_complete = 1
-let g:deoplete#enable_at_startup=1
 
+set splitbelow
+set splitright
 set modelines=0
 set backupcopy=yes
 set tabstop=2
@@ -87,7 +106,6 @@ set gdefault
 set incsearch
 set showmatch
 set hlsearch
-nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %v
 noremap <tab> %
 set ignorecase
@@ -119,3 +137,42 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" Coc.nvim
+let g:coc_global_extensions = ['coc-emoji', 'coc-eslint', 'coc-prettier', 'coc-tsserver', 'coc-tslint', 'coc-tslint-plugin', 'coc-css', 'coc-json', 'coc-pyls', 'coc-yaml']
+
+" Better display for messages
+set cmdheight=2
+" Smaller updatetime for CursorHold & CursorHoldI
+set updatetime=300
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+" always show signcolumns
+set signcolumn=yes
+
+" Use `lp` and `ln` for navigate diagnostics
+nmap <silent> <leader>lp <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>ln <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> <leader>ld <Plug>(coc-definition)
+nmap <silent> <leader>lt <Plug>(coc-type-definition)
+nmap <silent> <leader>li <Plug>(coc-implementation)
+nmap <silent> <leader>lf <Plug>(coc-references)
+
+" Remap for rename current word
+nmap <leader>lr <Plug>(coc-rename)
+
+" Use K for show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
