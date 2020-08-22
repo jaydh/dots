@@ -3,25 +3,27 @@ call plug#begin()
 	Plug 'rakr/vim-one'
 	Plug 'elzr/vim-json'
   Plug 'HerringtonDarkholme/yats.vim'
-  Plug 'scrooloose/nerdtree'
   Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 	Plug 'prettier/vim-prettier', {'do': 'yarn install'}
 	Plug 'jiangmiao/auto-pairs'
   Plug 'lilydjwg/colorizer'
   Plug 'mhartington/vim-typings'
   Plug 'airblade/vim-gitgutter'
+  Plug 'tpope/vim-vinegar'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-surround'
   Plug 'drewtempelmeyer/palenight.vim'
-  Plug '/usr/local/opt/fzf'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'w0rp/ale'
+  Plug 'huyvohcmc/atlas.vim'
+  Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+  Plug 'ayu-theme/ayu-vim'
 call plug#end()
 
 
 nnoremap <C-f> :Files<Cr>
 nnoremap <C-g> :Rg<Cr>
-nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <c-x><c-l> <plug>(fzf-complete-line)
 nnoremap <Leader>i :ALEFix<CR>
 nmap <Leader>a <Plug>GitGutterStageHunk
@@ -31,10 +33,6 @@ let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
-let g:fzf_layout = { 'down': '~40%' }
-let g:fzf_layout = { 'window': 'enew' }
-let g:fzf_layout = { 'window': '-tabnew' }
-let g:fzf_layout = { 'window': '10split' }
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
@@ -49,24 +47,24 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
-autocmd! FileType fzf
-autocmd  FileType fzf set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+
 let g:ale_fixers = ['prettier', 'eslint']
 nmap <leader>i <Plug>(ale_fix)
 let g:ale_completion_enabled = 1
 syntax enable
-colorscheme palenight
+
 if (has("nvim"))
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 if (has("termguicolors"))
   set termguicolors
 endif
+
+let ayucolor="mirage"  " for light version of theme
+colorscheme ayu
 let g:palenight_terminal_italics=1
-set background=dark
 set number relativenumber
 let g:enable_bold_font = 1
 let g:enbale_italic_font = 1
