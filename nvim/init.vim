@@ -18,12 +18,17 @@ call plug#begin()
   Plug 'w0rp/ale'
   Plug 'huyvohcmc/atlas.vim'
   Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+  Plug 'greymd/oscyank.vim'
   Plug 'ayu-theme/ayu-vim'
 call plug#end()
 
+setlocal spell spelllang=en_us
+set termguicolors     " enable true colors support
+let ayucolor="dark"  " for light version of theme
+colorscheme ayu
 
 nnoremap <C-f> :Files<Cr>
-nnoremap <C-g> :Rg<Cr>
+nnoremap <C-g> :Ag<Cr>
 nnoremap <c-x><c-l> <plug>(fzf-complete-line)
 nnoremap <Leader>i :ALEFix<CR>
 nmap <Leader>a <Plug>GitGutterStageHunk
@@ -62,9 +67,6 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-let ayucolor="mirage"  " for light version of theme
-colorscheme ayu
-let g:palenight_terminal_italics=1
 set number relativenumber
 let g:enable_bold_font = 1
 let g:enbale_italic_font = 1
@@ -99,6 +101,8 @@ set number
 
 nnoremap / /\v
 vnoremap / /\vset ignorecase
+noremap <leader>y :Oscyank<cr>
+
 set smartcase
 set gdefault
 set incsearch
