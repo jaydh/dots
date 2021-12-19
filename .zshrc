@@ -1,8 +1,5 @@
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export EDITOR=nvim
-export JAVA_HOME=$(/usr/libexec/java_home -v 12)
-export BYOBU_PREFIX=/usr/local
-
-export PATH="/usr/local/mysql/bin:$PATH"
 autoload -Uz compinit
 compinit
 # Completion for kitty

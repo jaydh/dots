@@ -3,7 +3,7 @@ call plug#begin()
 	Plug 'rakr/vim-one'
 	Plug 'elzr/vim-json'
   Plug 'HerringtonDarkholme/yats.vim'
-  Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+  Plug 'neoclide/coc.nvim', {'branch': 'release','tag': '*', 'do': { -> coc#util#install()}}
 	Plug 'prettier/vim-prettier', {'do': 'yarn install'}
 	Plug 'jiangmiao/auto-pairs'
   Plug 'lilydjwg/colorizer'
@@ -20,13 +20,14 @@ call plug#begin()
   Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
   Plug 'greymd/oscyank.vim'
   Plug 'ayu-theme/ayu-vim'
+  Plug 'danilo-augusto/vim-afterglow'
+  Plug 'evanleck/vim-svelte', {'branch': 'main'}
 call plug#end()
 
 setlocal spell spelllang=en_us
 set termguicolors     " enable true colors support
-let ayucolor="dark"  " for light version of theme
-colorscheme ayu
 
+colorscheme afterglow
 nnoremap <C-f> :Files<Cr>
 nnoremap <C-g> :Ag<Cr>
 nnoremap <c-x><c-l> <plug>(fzf-complete-line)
@@ -55,7 +56,10 @@ let g:fzf_colors =
 
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
-let g:ale_fixers = ['prettier', 'eslint']
+let g:ale_fixers = [   
+      \'rust': ['rustfmt'],
+      \'javascript': ['prettier', 'eslint']
+]
 nmap <leader>i <Plug>(ale_fix)
 let g:ale_completion_enabled = 1
 syntax enable
@@ -141,7 +145,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " Coc.nvim
-<<<<<<< HEAD
 let g:coc_global_extensions = ['coc-emoji', 'coc-eslint', 'coc-prettier', 'coc-tsserver', 'coc-tslint', 'coc-tslint-plugin', 'coc-css', 'coc-json', 'coc-pyls', 'coc-yaml', 'coc-svelte']
 
 " Better display for messages
