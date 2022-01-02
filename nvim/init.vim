@@ -55,11 +55,11 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+let g:ale_fixers = 
+\ { 
+ \'rust': ['rustfmt', 'trim_whitespace', 'remove_trailing_lines'],
+ \'javascript': ['prettier', 'eslint']}
 
-let g:ale_fixers = [   
-      \'rust': ['rustfmt'],
-      \'javascript': ['prettier', 'eslint']
-]
 nmap <leader>i <Plug>(ale_fix)
 let g:ale_completion_enabled = 1
 syntax enable
