@@ -22,4 +22,5 @@ alias n=nnn
 alias vim=nvim
 alias vi=nvim
 alias bs='git branch-select'
+alias vmrun="/Applications/VMware Fusion Tech Preview.app/Contents/Library/vmrun"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -22,6 +22,7 @@ call plug#begin()
   Plug 'ayu-theme/ayu-vim'
   Plug 'danilo-augusto/vim-afterglow'
   Plug 'evanleck/vim-svelte', {'branch': 'main'}
+  Plug 'rust-lang/rust.vim'
 call plug#end()
 
 setlocal spell spelllang=en_us
