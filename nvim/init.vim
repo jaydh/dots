@@ -60,10 +60,11 @@ let g:ale_fixers =
 \ { 
  \'rust': ['rustfmt', 'trim_whitespace', 'remove_trailing_lines'],
  \'javascript': ['prettier', 'eslint']}
-
-nmap <leader>i <Plug>(ale_fix)
+let g:rustfmt_autosave = 1
 let g:ale_completion_enabled = 1
 syntax enable
+filetype plugin indent on
+nmap <leader>i <Plug>(ale_fix)
 
 if (has("nvim"))
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -146,7 +147,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " Coc.nvim
-let g:coc_global_extensions = ['coc-emoji', 'coc-eslint', 'coc-prettier', 'coc-tsserver', 'coc-tslint', 'coc-tslint-plugin', 'coc-css', 'coc-json', 'coc-pyls', 'coc-yaml', 'coc-svelte']
+let g:coc_global_extensions = ['coc-emoji', 'coc-eslint', 'coc-prettier', 'coc-tsserver', 'coc-tslint', 'coc-tslint-plugin', 'coc-css', 'coc-json', 'coc-pyls', 'coc-yaml', 'coc-svelte', 'coc-rust-analyzer']
 
 " Better display for messages
 set cmdheight=2
