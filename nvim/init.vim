@@ -23,12 +23,16 @@ call plug#begin()
   Plug 'danilo-augusto/vim-afterglow'
   Plug 'evanleck/vim-svelte', {'branch': 'main'}
   Plug 'rust-lang/rust.vim'
+  Plug 'NLKNguyen/papercolor-theme'
 call plug#end()
 
 setlocal spell spelllang=en_us
 set termguicolors     " enable true colors support
+set t_Co=256   " This is may or may not needed.
 
-colorscheme afterglow
+set background=dark
+colorscheme PaperColor
+
 nnoremap <C-f> :Files<Cr>
 nnoremap <C-g> :Ag<Cr>
 nnoremap <c-x><c-l> <plug>(fzf-complete-line)
@@ -56,10 +60,17 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+let g:ale_linter_aliases = {'jsx': ['css', 'javascript']}
+let g:ale_linters = {'jsx': ['stylelint', 'eslint']}
+
+
+
 let g:ale_fixers = 
 \ { 
  \'rust': ['rustfmt', 'trim_whitespace', 'remove_trailing_lines'],
- \'javascript': ['prettier', 'eslint']}
+ \'javascript': ['prettier', 'eslint'],
+ \'jsx': ['prettier', 'eslint']
+ \}
 
 nmap <leader>i <Plug>(ale_fix)
 let g:ale_completion_enabled = 1
@@ -79,6 +90,8 @@ set mouse=a
 
 let g:nvim_typescript#type_info_on_hold = 1
 let g:nvim_typescript#signature_complete = 1
+
+set diffopt=vertical
 
 set splitbelow
 set splitright
