@@ -1,3 +1,7 @@
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export EDITOR=nvim
 autoload -Uz compinit

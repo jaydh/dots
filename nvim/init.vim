@@ -86,22 +86,22 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-set number relativenumber
 let g:enable_bold_font = 1
 let g:enbale_italic_font = 1
-set mouse=a
-
 let g:nvim_typescript#type_info_on_hold = 1
 let g:nvim_typescript#signature_complete = 1
 
+set cursorline
+set mouse=a
 set diffopt=vertical
-
+set ts=4
+set number relativenumber
 set splitbelow
 set splitright
 set modelines=0
 set backupcopy=yes
 set tabstop=2
-set shiftwidth=2
+set shiftwidth=4
 set softtabstop=2
 set expandtab
 set encoding=utf-8
@@ -119,31 +119,38 @@ set backspace=indent,eol,start
 set laststatus=2
 set undofile
 set number
-
-nnoremap / /\v
-vnoremap / /\vset ignorecase
-noremap <leader>y :Oscyank<cr>
-
 set smartcase
 set gdefault
 set incsearch
 set showmatch
 set hlsearch
-nnoremap <tab> %v
-noremap <tab> %
 set ignorecase
 set smartcase
 set incsearch
 set showmatch
 set hlsearch
-nnoremap <leader><space> :noh<cr>
-
 set wrap
 set textwidth=79
 set formatoptions=qrn1
 set colorcolumn=85
+" Better display for messages
+set cmdheight=2
+" Smaller updatetime for CursorHold & CursorHoldI
+set updatetime=300
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+" always show signcolumns
+set signcolumn=yes
+
+
 au FocusLost * :wa
 
+nnoremap / /\v
+vnoremap / /\vset ignorecase
+noremap <leader>y :Oscyank<cr>
+nnoremap <tab> %v
+noremap <tab> %
+nnoremap <leader><space> :noh<cr>
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
@@ -162,16 +169,8 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " Coc.nvim
-let g:coc_global_extensions = ['coc-emoji', 'coc-eslint', 'coc-prettier', 'coc-tsserver', 'coc-tslint', 'coc-tslint-plugin', 'coc-css', 'coc-json', 'coc-pyls', 'coc-yaml', 'coc-svelte', 'coc-rust-analyzer']
+let g:coc_global_extensions = ['coc-emoji', 'coc-eslint', 'coc-prettier', 'coc-tsserver', 'coc-tslint', 'coc-tslint-plugin', 'coc-css', 'coc-json', 'coc-pyls', 'coc-yaml', 'coc-svelte', 'coc-rust-analyzer', 'coc-python']
 
-" Better display for messages
-set cmdheight=2
-" Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=300
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-" always show signcolumns
-set signcolumn=yes
 
 " Use `lp` and `ln` for navigate diagnostics
 nmap <silent> <leader>lp <Plug>(coc-diagnostic-prev)
