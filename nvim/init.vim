@@ -63,12 +63,20 @@ let g:ale_fixers =
 \ { 
  \'rust': ['rustfmt', 'trim_whitespace', 'remove_trailing_lines'],
  \'javascript': ['prettier'],
+ \'css': ['prettier'],
+ \'scss': ['prettier'],
  \'jsx': ['prettier'],
  \'python': ['autopep8']
  \}
 
+let g:ale_linters = {
+\  'rust': ['analyzer'],
+\}
+
 nmap <leader>i <Plug>(ale_fix)
 let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
+let g:rustfmt_fail_silently = 0
 let g:ale_completion_enabled = 1
 syntax enable
 filetype plugin indent on
