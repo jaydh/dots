@@ -1,0 +1,12 @@
+{
+    "coc": {
+        "preferences": {
+            "noselect":false
+        }
+    },
+    "rust-analyzer": {
+      "cargo" : {
+        "features" : [ "ssr" ]
+      }
+    }
+}

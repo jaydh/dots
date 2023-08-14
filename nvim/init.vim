@@ -65,6 +65,7 @@ let g:ale_fixers =
  \'javascript': ['prettier'],
  \'css': ['prettier'],
  \'scss': ['prettier'],
+ \'html': ['prettier'],
  \'jsx': ['prettier'],
  \'python': ['autopep8']
  \}
