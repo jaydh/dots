@@ -23,7 +23,6 @@ call plug#begin()
   Plug 'danilo-augusto/vim-afterglow'
   Plug 'evanleck/vim-svelte', {'branch': 'main'}
   Plug 'rust-lang/rust.vim'
-  Plug 'NLKNguyen/papercolor-theme'
 call plug#end()
 
 setlocal spell spelllang=en_us
@@ -31,8 +30,7 @@ set termguicolors     " enable true colors support
 set t_Co=256   " This is may or may not needed.
 
 set background=dark
-colorscheme PaperColor
-
+colorscheme palenight
 
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
