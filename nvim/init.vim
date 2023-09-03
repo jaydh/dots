@@ -1,26 +1,10 @@
 call plug#begin()
-    Plug 'dylanaraps/wal'
-    Plug 'rakr/vim-one'
     Plug 'elzr/vim-json'
-    Plug 'HerringtonDarkholme/yats.vim'
-    Plug 'prettier/vim-prettier', {'do': 'yarn install'}
-    Plug 'jiangmiao/auto-pairs'
     Plug 'lilydjwg/colorizer'
-    Plug 'mhartington/vim-typings'
-    Plug 'airblade/vim-gitgutter'
     Plug 'tpope/vim-vinegar'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-surround'
     Plug 'drewtempelmeyer/palenight.vim'
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-    Plug 'junegunn/fzf.vim'
-    Plug 'huyvohcmc/atlas.vim'
-    Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
-    Plug 'greymd/oscyank.vim'
-    Plug 'ayu-theme/ayu-vim'
-    Plug 'danilo-augusto/vim-afterglow'
-    Plug 'evanleck/vim-svelte', {'branch': 'main'}
-    Plug 'rust-lang/rust.vim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
     Plug 'hrsh7th/vim-vsnip'
@@ -31,6 +15,7 @@ call plug#begin()
     Plug 'hrsh7th/cmp-path'
     Plug 'hrsh7th/cmp-cmdline'
     Plug 'hrsh7th/nvim-cmp'
+    Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 setlocal spell spelllang=en_us
