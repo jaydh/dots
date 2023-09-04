@@ -1,10 +1,15 @@
 call plug#begin()
     Plug 'elzr/vim-json'
+    Plug 'HerringtonDarkholme/yats.vim'
+    Plug 'prettier/vim-prettier', {'do': 'yarn install'}
     Plug 'lilydjwg/colorizer'
     Plug 'tpope/vim-vinegar'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-surround'
     Plug 'drewtempelmeyer/palenight.vim'
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf.vim'
+    Plug 'rust-lang/rust.vim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
     Plug 'hrsh7th/vim-vsnip'
@@ -15,6 +20,7 @@ call plug#begin()
     Plug 'hrsh7th/cmp-path'
     Plug 'hrsh7th/cmp-cmdline'
     Plug 'hrsh7th/nvim-cmp'
+    Plug 'nvim-tree/nvim-web-devicons'
     Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
@@ -239,4 +245,9 @@ nvim_lsp.rust_analyzer.setup({
         }
     }
 })
+
+nvim_lsp.tsserver.setup {
+    capabilities = capabilities
+}
+
 EOF
