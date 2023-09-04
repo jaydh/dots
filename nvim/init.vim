@@ -18,7 +18,7 @@ call plug#begin()
     Plug 'hrsh7th/nvim-cmp'
     Plug 'nvim-tree/nvim-web-devicons'
     Plug 'jiangmiao/auto-pairs'
-    Plug 'lukas-reineke/indent-blankline'
+    Plug 'lukas-reineke/indent-blankline.nvim'
 
 call plug#end()
 
