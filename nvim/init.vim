@@ -7,7 +7,7 @@ call plug#begin()
     Plug 'drewtempelmeyer/palenight.vim'
     Plug 'rust-lang/rust.vim'
     Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
+    Plug 'nvim-telescope/telescope.nvim'
     Plug 'hrsh7th/vim-vsnip'
     Plug 'hrsh7th/vim-vsnip-integ'
     Plug 'neovim/nvim-lspconfig'
@@ -18,6 +18,8 @@ call plug#begin()
     Plug 'hrsh7th/nvim-cmp'
     Plug 'nvim-tree/nvim-web-devicons'
     Plug 'jiangmiao/auto-pairs'
+    Plug 'lukas-reineke/indent-blankline'
+
 call plug#end()
 
 setlocal spell spelllang=en_us
