@@ -19,7 +19,8 @@ call plug#begin()
     Plug 'nvim-tree/nvim-web-devicons'
     Plug 'jiangmiao/auto-pairs'
     Plug 'lukas-reineke/indent-blankline.nvim'
-
+    Plug 'rust-lang/rust.vim'
+    Plug 'nvim-tree/nvim-web-devicons'
 call plug#end()
 
 setlocal spell spelllang=en_us
@@ -152,7 +153,6 @@ set nowritebackup
 set updatetime=300
 set signcolumn=yes
 
-
 lua <<EOF
   local cmp = require'cmp'
 
@@ -246,6 +246,34 @@ nvim_lsp.rust_analyzer.setup({
 
 nvim_lsp.tsserver.setup {
     capabilities = capabilities
+}
+
+require'nvim-web-devicons'.setup {
+ override = {
+  zsh = {
+    icon = "",
+    color = "#428850",
+    cterm_color = "65",
+    name = "Zsh"
+  }
+ };
+ color_icons = true;
+ default = true;
+ strict = true;
+ override_by_filename = {
+  [".gitignore"] = {
+    icon = "",
+    color = "#f1502f",
+    name = "Gitignore"
+  }
+ };
+ override_by_extension = {
+  ["log"] = {
+    icon = "",
+    color = "#81e043",
+    name = "Log"
+  }
+ };
 }
 
 EOF
