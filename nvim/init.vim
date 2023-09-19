@@ -114,9 +114,7 @@ set colorcolumn=85
 set cmdheight=2
 set updatetime=300
 set shortmess+=c
-" always show signcolumns
 set signcolumn=yes
-
 
 au FocusLost * :wa
 
@@ -147,6 +145,9 @@ nnoremap <C-g> <cmd>Telescope live_grep<cr>
 nnoremap <c-x><c-l> <plug>(fzf-complete-line)
 nmap <Leader>a <Plug>GitGutterStageHunk
 nmap <Leader>r <Plug>GitGutterUndoHunk
+
+autocmd BufRead,BufNewFile *.js,*.ts nnoremap <leader>i :%!prettier --write %<CR>:keepjumps e!<CR>
+autocmd BufRead,BufNewFile *.rs nnoremap <leader>i :%!leptosfmt %<CR>:keepjumps e!<CR>
 
 set nobackup
 set nowritebackup
