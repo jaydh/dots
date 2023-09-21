@@ -147,17 +147,30 @@ nnoremap <C-b> <cmd>Telescope buffers<cr>
 nmap <Leader>a <Plug>GitGutterStageHunk
 nmap <Leader>r <Plug>GitGutterUndoHunk
 
-" Automatically run leptosfmt on the current file on save and reload the buffer
-function! LeptosfmtAndReload()
+" Automatically run a formatter on save for specific file types
+function! FormatAndReload()
     let save_cursor = getpos(".")
     let current_file = expand('%')
-    execute 'silent! !leptosfmt' shellescape(current_file)
-    e!
+    
+    let s:file_formatters = {
+        \ '\.js$': 'prettier --write',
+        \ '\.ts$': 'prettier --write',
+        \ '\.jsx$': 'prettier --write',
+        \ '\.tsx$': 'prettier --write',
+        \ '\.rs$': 'leptosfmt',
+        \ }
+
+    let formatter = get(s:file_formatters, current_file, '')
+
+    if !empty(formatter)
+        execute 'silent! !' . formatter . ' ' . shellescape(current_file)
+        e!
+    endif
+
     call setpos('.', save_cursor)
 endfunction
 
-autocmd BufWritePost *.rs call LeptosfmtAndReload()
-
+autocmd BufWritePre * call FormatAndReload()
 
 lua <<EOF
   local cmp = require'cmp'
