@@ -115,14 +115,12 @@ set cmdheight=2
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
-
+set nobackup
+set nowritebackup
 au FocusLost * :wa
 
 nnoremap / /\v
 vnoremap / /\vset ignorecase
-noremap <leader>y :Oscyank<cr>
-nnoremap <tab> %v
-noremap <tab> %
 nnoremap <leader><space> :noh<cr>
 nnoremap <up> <nop>
 nnoremap <down> <nop>
@@ -140,19 +138,26 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
 nnoremap <C-f> <cmd>Telescope find_files<cr>
 nnoremap <C-g> <cmd>Telescope live_grep<cr>
-nnoremap <c-x><c-l> <plug>(fzf-complete-line)
+nnoremap <C-b> <cmd>Telescope buffers<cr>
+" nnoremap <C-h> <cmd>Telescope help_tags<cr>
+
 nmap <Leader>a <Plug>GitGutterStageHunk
 nmap <Leader>r <Plug>GitGutterUndoHunk
 
-autocmd BufRead,BufNewFile *.js,*.ts nnoremap <leader>i :%!prettier --write %<CR>:keepjumps e!<CR>
-autocmd BufRead,BufNewFile *.rs nnoremap <leader>i :%!leptosfmt %<CR>:keepjumps e!<CR>
+" Automatically run leptosfmt on the current file on save and reload the buffer
+function! LeptosfmtAndReload()
+    let save_cursor = getpos(".")
+    let current_file = expand('%')
+    execute 'silent! !leptosfmt' shellescape(current_file)
+    e!
+    call setpos('.', save_cursor)
+endfunction
 
-set nobackup
-set nowritebackup
-set updatetime=300
-set signcolumn=yes
+autocmd BufWritePost *.rs call LeptosfmtAndReload()
+
 
 lua <<EOF
   local cmp = require'cmp'
