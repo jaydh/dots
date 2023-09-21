@@ -147,47 +147,17 @@ nnoremap <C-b> <cmd>Telescope buffers<cr>
 nmap <Leader>a <Plug>GitGutterStageHunk
 nmap <Leader>r <Plug>GitGutterUndoHunk
 
-" Automatically run a formatter on save for specific file types
-function! FormatAndReload()
-    let save_cursor = getpos(".")
-    let current_file = expand('%')
-    
-    let s:file_formatters = {
-        \ '\.js$': 'prettier --write',
-        \ '\.ts$': 'prettier --write',
-        \ '\.jsx$': 'prettier --write',
-        \ '\.tsx$': 'prettier --write',
-        \ '\.rs$': 'leptosfmt',
-        \ }
-
-    let formatter = get(s:file_formatters, current_file, '')
-
-    if !empty(formatter)
-        execute 'silent! !' . formatter . ' ' . shellescape(current_file)
-        e!
-    endif
-
-    call setpos('.', save_cursor)
-endfunction
-
-autocmd BufWritePre * call FormatAndReload()
 
 lua <<EOF
   local cmp = require'cmp'
 
   cmp.setup({
     snippet = {
-      -- REQUIRED - you must specify a snippet engine
       expand = function(args)
         vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
       end,
     },
     window = {
-      -- completion = cmp.config.window.bordered(),
-      -- documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -199,9 +169,6 @@ lua <<EOF
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
       { name = 'vsnip' }, -- For vsnip users.
-      -- { name = 'luasnip' }, -- For luasnip users.
-      -- { name = 'ultisnips' }, -- For ultisnips users.
-      -- { name = 'snippy' }, -- For snippy users.
     }, {
       { name = 'buffer' },
     })
@@ -234,65 +201,89 @@ lua <<EOF
     })
   })
 
-local nvim_lsp = require'lspconfig'
-local on_attach = function(client)
-    require'completion'.on_attach(client)
-end
+    local nvim_lsp = require'lspconfig'
+    local on_attach = function(client)
+        require'completion'.on_attach(client)
+    end
 
-nvim_lsp.rust_analyzer.setup({
-    capabilities = capabilities,
-    on_attach=on_attach,
-    settings = {
-        ["rust-analyzer"] = {
-            imports = {
-                granularity = {
-                    group = "module",
+    nvim_lsp.rust_analyzer.setup({
+        capabilities = capabilities,
+        on_attach=on_attach,
+        settings = {
+            ["rust-analyzer"] = {
+                imports = {
+                    granularity = {
+                        group = "module",
+                    },
+                    prefix = "self",
                 },
-                prefix = "self",
-            },
-            cargo = {
-                buildScripts = {
-                    enable = true,
+                cargo = {
+                    buildScripts = {
+                        enable = true,
+                    },
+                    features = { "ssr" }
                 },
-                features = { "ssr" }
-            },
-            procMacro = {
-                enable = true
-            },
+                procMacro = {
+                    enable = true
+                },
+            }
         }
+    })
+
+    nvim_lsp.tsserver.setup {
+        capabilities = capabilities
     }
-})
 
-nvim_lsp.tsserver.setup {
-    capabilities = capabilities
-}
+    require'nvim-web-devicons'.setup {
+     override = {
+      zsh = {
+        icon = "",
+        color = "#428850",
+        cterm_color = "65",
+        name = "Zsh"
+      }
+     };
+     color_icons = true;
+     default = true;
+     strict = true;
+     override_by_filename = {
+      [".gitignore"] = {
+        icon = "",
+        color = "#f1502f",
+        name = "Gitignore"
+      }
+     };
+     override_by_extension = {
+      ["log"] = {
+        icon = "",
+        color = "#81e043",
+        name = "Log"
+      }
+     };
+    }
 
-require'nvim-web-devicons'.setup {
- override = {
-  zsh = {
-    icon = "",
-    color = "#428850",
-    cterm_color = "65",
-    name = "Zsh"
-  }
- };
- color_icons = true;
- default = true;
- strict = true;
- override_by_filename = {
-  [".gitignore"] = {
-    icon = "",
-    color = "#f1502f",
-    name = "Gitignore"
-  }
- };
- override_by_extension = {
-  ["log"] = {
-    icon = "",
-    color = "#81e043",
-    name = "Log"
-  }
- };
-}
+    function FormatAndReload()
+        local save_cursor = vim.fn.getpos(".")
+        local current_file = vim.fn.expand('%')
+        local current_file_name = vim.fn.fnamemodify(current_file, ":t")
+        local formatter = ''
+        local ext = vim.fn.fnamemodify(current_file_name, ':e')
+
+        if ext == 'js' or ext == 'ts' or ext == 'jsx' or ext == 'tsx' then
+            formatter = 'prettier --write'
+        elseif ext == 'rs' then
+            formatter = 'leptosfmt'
+        end
+
+        if formatter ~= '' then
+            vim.cmd("silent! ! " .. formatter .. " " .. vim.fn.shellescape(current_file_name))
+            vim.cmd("e!")
+        end
+
+        vim.fn.setpos('.', save_cursor)
+    end
+
+    vim.cmd("command! FormatAndReload lua FormatAndReload()")
+    vim.api.nvim_set_keymap('n', '<leader>i', [[:FormatAndReload<CR>]], { noremap = true, silent = true })
 
 EOF
