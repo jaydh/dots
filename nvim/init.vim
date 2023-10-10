@@ -149,6 +149,7 @@ nmap <Leader>r <Plug>GitGutterUndoHunk
 
 
 lua <<EOF
+
   local cmp = require'cmp'
 
   cmp.setup({
@@ -221,7 +222,6 @@ lua <<EOF
                     buildScripts = {
                         enable = true,
                     },
-                    features = { "ssr" }
                 },
                 procMacro = {
                     enable = true
@@ -233,57 +233,5 @@ lua <<EOF
     nvim_lsp.tsserver.setup {
         capabilities = capabilities
     }
-
-    require'nvim-web-devicons'.setup {
-     override = {
-      zsh = {
-        icon = "",
-        color = "#428850",
-        cterm_color = "65",
-        name = "Zsh"
-      }
-     };
-     color_icons = true;
-     default = true;
-     strict = true;
-     override_by_filename = {
-      [".gitignore"] = {
-        icon = "",
-        color = "#f1502f",
-        name = "Gitignore"
-      }
-     };
-     override_by_extension = {
-      ["log"] = {
-        icon = "",
-        color = "#81e043",
-        name = "Log"
-      }
-     };
-    }
-
-    function FormatAndReload()
-        local save_cursor = vim.fn.getpos(".")
-        local current_file = vim.fn.expand('%')
-        local current_file_name = vim.fn.fnamemodify(current_file, ":t")
-        local formatter = ''
-        local ext = vim.fn.fnamemodify(current_file_name, ':e')
-
-        if ext == 'js' or ext == 'ts' or ext == 'jsx' or ext == 'tsx' then
-            formatter = 'prettier --write'
-        elseif ext == 'rs' then
-            formatter = 'leptosfmt'
-        end
-
-        if formatter ~= '' then
-            vim.cmd("silent! ! " .. formatter .. " " .. vim.fn.shellescape(current_file_name))
-            vim.cmd("e!")
-        end
-
-        vim.fn.setpos('.', save_cursor)
-    end
-
-    vim.cmd("command! FormatAndReload lua FormatAndReload()")
-    vim.api.nvim_set_keymap('n', '<leader>i', [[:FormatAndReload<CR>]], { noremap = true, silent = true })
 
 EOF
