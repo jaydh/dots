@@ -15,7 +15,12 @@ export NVM_DIR="$HOME/.nvm"
 
 export ZSH="/home/jay/.oh-my-zsh"
 ZSH_THEME="flazz"
-plugins=(git vi-mode)
+plugins=(
+    git 
+    vi-mode
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+)
 
 source $ZSH/oh-my-zsh.sh
 
