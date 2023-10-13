@@ -50,3 +50,10 @@ unset __conda_setup
 if [ "$TMUX" = "" ]; then tmux; fi
 eval "$(starship init zsh)"
 source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
+bindkey '\t' end-of-line
+export ZSH_AUTOSUGGEST_STRATEGY=(
+    history
+    completion
+)
