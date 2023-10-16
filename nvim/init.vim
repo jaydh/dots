@@ -64,6 +64,7 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
+set guifont="BlexMono Nerd Font Mono"
 let g:enable_bold_font = 1
 let g:enbale_italic_font = 1
 let g:nvim_typescript#type_info_on_hold = 1
