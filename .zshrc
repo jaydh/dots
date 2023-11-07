@@ -1,3 +1,5 @@
+export GOPATH=$HOME/go
+export PATH=${PATH}:`go env GOPATH`/bin
 export VKD3D_CONFIG=dxr11,dxr
 export PROTON_ENABLE_NVAPI=1
 export PROTON_ENABLE_NGX_UPDATER=1
@@ -22,8 +24,6 @@ plugins=(
     zsh-syntax-highlighting
 )
 
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin”
 
 source $ZSH/oh-my-zsh.sh
 
