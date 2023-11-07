@@ -19,7 +19,11 @@ plugins=(
     git 
     vi-mode
     zsh-autosuggestions
+    zsh-syntax-highlighting
 )
+
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin”
 
 source $ZSH/oh-my-zsh.sh
 
@@ -49,7 +53,6 @@ unset __conda_setup
 #
 if [ "$TMUX" = "" ]; then tmux; fi
 eval "$(starship init zsh)"
-source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
 bindkey '\t' end-of-line
