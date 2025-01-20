@@ -18,6 +18,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+    {'github/copilot.vim'},
     {'L3MON4D3/LuaSnip'},
     {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
     {'drewtempelmeyer/palenight.vim'},
@@ -28,7 +29,7 @@ require('lazy').setup({
     {'hrsh7th/cmp-path'},
     {'hrsh7th/vim-vsnip'},
     {'hrsh7th/nvim-cmp'},
-    {'jiangmiao/auto-pairs'},
+    {'LunarWatcher/auto-pairs'},
     {'lilydjwg/colorizer'},
     {'lukas-reineke/indent-blankline.nvim'},
     {'neovim/nvim-lspconfig'},
@@ -39,7 +40,10 @@ require('lazy').setup({
     {'tpope/vim-fugitive'},
     {'tpope/vim-surround'},
     {'tpope/vim-vinegar'},
-    {'rafamadriz/friendly-snippets'}
+    {'rafamadriz/friendly-snippets'},
+    {'sbdchd/neoformat'},
+    {'williamboman/mason.nvim'},
+    {'williamboman/mason-lspconfig.nvim'},
 })
 
 local lsp_zero = require('lsp-zero')
@@ -51,8 +55,6 @@ end)
 local nvim_lsp = require'lspconfig'
 
 nvim_lsp.rust_analyzer.setup({
-    capabilities = capabilities,
-    on_attach=on_attach,
     settings = {
         ["rust-analyzer"] = {
             imports = {
@@ -65,15 +67,28 @@ nvim_lsp.rust_analyzer.setup({
                 buildScripts = {
                     enable = true,
                 },
+                features = "all"
             },
             procMacro = {
-                enable = true
+              ignored = {
+                leptos_macro = {
+                  -- optional: --
+                  -- "component",
+                  "server",
+                },
+              },
             },
+            server = {
+              extraEnv = {
+                ["RA_SESSION_CHANGE_DEBOUNCE"] = "1000" -- in milliseconds
+              }
+            }
+
         }
     }
 })
 
-nvim_lsp.tsserver.setup {
+nvim_lsp.ts_ls.setup {
     capabilities = capabilities
 }
 
