@@ -1,3 +1,4 @@
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export GOPATH=$HOME/go
 export PATH=${PATH}:`go env GOPATH`/bin
 export VKD3D_CONFIG=dxr11,dxr
