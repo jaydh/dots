@@ -18,10 +18,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-    {'github/copilot.vim'},
     {'L3MON4D3/LuaSnip'},
     {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
-    {'drewtempelmeyer/palenight.vim'},
     {'elzr/vim-json'},
     {'hrsh7th/cmp-buffer'},
     {'hrsh7th/cmp-cmdline'},
@@ -44,7 +42,18 @@ require('lazy').setup({
     {'sbdchd/neoformat'},
     {'williamboman/mason.nvim'},
     {'williamboman/mason-lspconfig.nvim'},
+    {'stsewd/isort.nvim'},
+    {
+      "cuducos/yaml.nvim",
+      ft = { "yaml" }, -- optional
+      dependencies = {
+        "nvim-treesitter/nvim-treesitter",
+        "nvim-telescope/telescope.nvim", -- optional
+      },
+    }
 })
+
+vim.g.neoformat_enabled_python = { 'yapf' }
 
 local lsp_zero = require('lsp-zero')
 
@@ -113,6 +122,25 @@ vim.lsp.config('gopls', {
     },
   },
 })
+
+vim.lsp.config('pyright', {})
+vim.lsp.config('pylsp', {
+ settings = {
+        pylsp = {
+            plugins = {
+                flake8 = {
+                    enabled = true,
+                    maxLineLength = 88,
+                },
+                pylsp_mypy = {
+                    enabled = false,
+                    live_mode = true,
+                },
+             }
+        }
+    }
+})
+
 
 
 local cmp = require('cmp')
