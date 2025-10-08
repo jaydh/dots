@@ -63,9 +63,8 @@ lsp_zero.format_on_save({
   }
 })
 
-local nvim_lsp = require'lspconfig'
 
-nvim_lsp.rust_analyzer.setup({
+vim.lsp.config('rust_analyzer', {
     settings = {
         ["rust-analyzer"] = {
             imports = {
@@ -99,11 +98,11 @@ nvim_lsp.rust_analyzer.setup({
     }
 })
 
-nvim_lsp.ts_ls.setup {
+vim.lsp.config('ts_ls', {
     capabilities = capabilities
-}
+})
 
-nvim_lsp.gopls.setup({
+vim.lsp.config('gopls', {
   settings = {
     gopls = {
       analyses = {
@@ -162,4 +161,3 @@ cmp.setup.cmdline(':', {
       { name = 'cmdline' },
     }
 })
-
