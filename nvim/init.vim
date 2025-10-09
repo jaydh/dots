@@ -5,7 +5,7 @@ set termguicolors
 set t_Co=256
 
 set background=dark
-colorscheme palenight
+colorscheme kanagawa
 
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',

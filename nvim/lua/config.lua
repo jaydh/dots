@@ -18,6 +18,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+    {'rebelot/kanagawa.nvim'},
     {'L3MON4D3/LuaSnip'},
     {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
     {'elzr/vim-json'},
@@ -141,6 +142,11 @@ vim.lsp.config('pylsp', {
     }
 })
 
+vim.lsp.enable('pylsp')
+vim.lsp.enable('pyright')
+vim.lsp.enable('gopls')
+vim.lsp.enable('ts_ls')
+vim.lsp.enable('rust_analyzer')
 
 
 local cmp = require('cmp')
