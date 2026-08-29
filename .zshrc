@@ -21,10 +21,8 @@ export NVM_DIR="$HOME/.nvm"
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="flazz"
 plugins=(
-    git 
+    git
     vi-mode
-    zsh-autosuggestions
-    zsh-syntax-highlighting
 )
 
 
@@ -39,21 +37,22 @@ alias k="kubectl"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/usr/etc/profile.d/conda.sh" ]; then
-        . "/usr/etc/profile.d/conda.sh"
+if command -v conda >/dev/null 2>&1; then
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/usr/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
     else
-        export PATH="/usr/bin:$PATH"
+        if [ -f "/usr/etc/profile.d/conda.sh" ]; then
+            . "/usr/etc/profile.d/conda.sh"
+        else
+            export PATH="/usr/bin:$PATH"
+        fi
     fi
+    unset __conda_setup
+    # <<< conda initialize <<<
 fi
-unset __conda_setup
-# <<< conda initialize <<<
-#
 if [ "$TMUX" = "" ]; then tmux; fi
 eval "$(starship init zsh)"
 
@@ -63,3 +62,7 @@ export ZSH_AUTOSUGGEST_STRATEGY=(
     history
     completion
 )
+
+# Arch-packaged zsh plugins (not in oh-my-zsh's custom/plugins, so sourced directly)
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
