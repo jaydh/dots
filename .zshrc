@@ -1,10 +1,12 @@
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export GOPATH=$HOME/go
 export PATH=${PATH}:`go env GOPATH`/bin
 export VKD3D_CONFIG=dxr11,dxr
 export PROTON_ENABLE_NVAPI=1
 export PROTON_ENABLE_NGX_UPDATER=1
 export PROTON_HIDE_NVIDIA_GPU=0
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
 export EDITOR=nvim
 autoload -Uz compinit
