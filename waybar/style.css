@@ -30,3 +30,6 @@ window#waybar {
 #battery.warning { color: #f9e2af; }
 #battery.critical { color: #f38ba8; }
 #network.disconnected, #pulseaudio.muted { color: #6c7086; }
+
+/* fixed-width digits so the speeds don't make the bar jitter */
+#network { font-feature-settings: "tnum"; min-width: 260px; }

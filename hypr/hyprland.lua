@@ -45,6 +45,7 @@ local menu        = "rofi -show drun"
 --
 hl.on("hyprland.start", function ()
   hl.exec_cmd("waybar")
+  hl.exec_cmd("hypridle")
 end)
 
 
@@ -261,6 +262,7 @@ hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
+hl.bind("SUPER + L", hl.dsp.exec_cmd("loginctl lock-session"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 
