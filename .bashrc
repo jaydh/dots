@@ -10,7 +10,8 @@ alias grep='grep --color=auto'
 alias k='kubectl'
 
 PS1='[\u@\h \W]\$ '
-. "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
+export PATH="$HOME/.local/bin:$PATH"
